@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">All jobs</string>
+    <string name="name">Nombre</string>
+    <string name="email">Introduzca su correo</string>
+    <string name="password">Introduzca su contraseña</string>
+    <string name="demand">Registrarse como demandante</string>
+    <string name="ofert">Registrarse como ofertante</string>
+    <string name="login">Iniciar sesion</string>
+    <string name="sign_in">Registrarse</string>
+    <string name="google">Google</string>
+    <string name="volver">Volver</string>
+    <string name="LogOut">Cerrar sesion</string>
+    <string name="filtro">Ofeta de </string>
+
+
+    <string name="prefs_file">com.alejandrorp.alljobs.PREFERENCE_FILE_KEY</string>
+
+</resources>
