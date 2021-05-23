@@ -10,9 +10,50 @@
     <string name="google">Google</string>
     <string name="volver">Volver</string>
     <string name="LogOut">Cerrar sesion</string>
-    <string name="filtro">Ofeta de </string>
+    <string name="filtro">Filtrar por: </string>
+    <string name="addOfert">Crear Oferta</string>
+    <string name="crear">Crear</string>
+    <string name="contactos">Contactos</string>
+    <string name="editar">Editar</string>
+    <string name="borrar">Borrar</string>
+    <string name="myAccount">Mi Cuenta</string>
+    <string name="myEmail">Mi Correo:</string>
+    <string name="home">Home</string>
+    <string name="cambiarImg">Cambiar imagen del perfil</string>
+    <string name="listaUsu">Lista usuarios</string>
+    <string name="buscar">Buscar</string>
+    <string name="darBaja">Eliminar cuenta</string>
+    <string name="userType">Tipo de cuenta:</string>
+
+    <string name="nameEMP">Nombre de la empresa</string>
+    <string name="descripcionEMP">Descripcion del puesto</string>
+    <string name="telEMP">Telefono de contacto</string>
+    <string name="correoEMP">Correo de contacto</string>
+    <string name="categoriaEMP">Categoria del puesto</string>
 
 
     <string name="prefs_file">com.alejandrorp.alljobs.PREFERENCE_FILE_KEY</string>
+
+
+    <string-array name="sectorTrabajo">
+        <item></item>
+        <item>Actividades Deportivas</item>
+        <item>Administracion</item>
+        <item>Agroalimentario</item>
+        <item>Artes Gráficas</item>
+        <item>Construccion</item>
+        <item>Energía</item>
+        <item>Imagen Personal</item>
+        <item>Imagen y sonido</item>
+        <item>Industrial</item>
+        <item>Informatica</item>
+        <item>Logística, Transporte y Comercio</item>
+        <item>Mantenimiento</item>
+        <item>Medio ambiente</item>
+        <item>Químico</item>
+        <item>Salud y Servicios a la Comunidad</item>
+        <item>Servicios Turisticos y Hosteleros</item>
+        <item>Textil</item>
+    </string-array>
 
 </resources>

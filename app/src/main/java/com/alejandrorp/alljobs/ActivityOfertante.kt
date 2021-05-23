@@ -8,10 +8,13 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_demandante.*
 import kotlinx.android.synthetic.main.activity_ofertante.*
 
 class ActivityOfertante : Metodos() {
+    //variable para comprobar si la sesion esta iniciada
     private var open= false
+
     private val GOOGLE_SIGN_IN = 1002
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_AllJobs)
@@ -47,10 +50,13 @@ class ActivityOfertante : Metodos() {
 
                                     //añade a la BD de users el provider y el tipo de usuario usando como PK el email
                                     FirebaseFirestore.getInstance().collection("users").document(eT_Email_Reg_Ofert.text.toString()).set(
-                                            hashMapOf("provider" to ProviderType.BASIC,"userType" to UserType.OFERTANTE)
+                                            hashMapOf("correo" to eT_Email_Reg_Demand.text.toString(),
+                                                "provider" to ProviderType.BASIC,"userType" to UserType.OFERTANTE,
+                                                "baja" to false)
                                     )
                                 }else{
-                                    showAlert("Se ha producido un error de autenticando al usuario, compruebe que el correo este bien escrito o ya existe")
+                                    showAlert("Se ha producido un error de autenticando al usuario, " +
+                                            "compruebe que el correo este bien escrito o ya existe")
                                 }
                             }
                 }else{
@@ -111,7 +117,10 @@ class ActivityOfertante : Metodos() {
                                                 }catch (e: Exception){
                                                     //crea un usuario de tipo google y ofertante
                                                     FirebaseFirestore.getInstance().collection("users").document(email).set(
-                                                            hashMapOf("provider" to ProviderType.GOOGLE,"userType" to UserType.OFERTANTE))
+                                                            hashMapOf("correo" to email,
+                                                                    "provider" to ProviderType.GOOGLE,"userType" to UserType.OFERTANTE,
+                                                                    "baja" to false)
+                                                    )
 
                                                     showHome(email?:"", ProviderType.GOOGLE, UserType.OFERTANTE)
                                                 }

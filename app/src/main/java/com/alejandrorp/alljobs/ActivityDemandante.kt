@@ -11,7 +11,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_demandante.*
 
 class ActivityDemandante : Metodos() {
+    //variable para comprobar si la sesion esta iniciada
     private var open= false
+
     private val GOOGLE_SIGN_IN = 1001
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,9 +48,11 @@ class ActivityDemandante : Metodos() {
                                 open=true
                             }
 
-                            //añade a la BD de users el provider y el tipo de usuario usando como PK el email
+//                            //añade a la BD de users el provider y el tipo de usuario usando como PK el email
                             FirebaseFirestore.getInstance().collection("users").document(eT_Email_Reg_Demand.text.toString()).set(
-                                    hashMapOf("provider" to ProviderType.BASIC,"userType" to UserType.DEMANDANTE)
+                                    hashMapOf("correo" to eT_Email_Reg_Demand.text.toString(),
+                                        "provider" to ProviderType.BASIC,"userType" to UserType.DEMANDANTE,
+                                        "baja" to false)
                             )
                         }else{
                             showAlert("Se ha producido un error de autenticando al usuario, compruebe que el correo este bien escrito o ya existe")
@@ -112,7 +116,10 @@ class ActivityDemandante : Metodos() {
                                                 }catch (e: Exception){
                                                     //crea un usuario de tipo google y demandante
                                                     FirebaseFirestore.getInstance().collection("users").document(email).set(
-                                                            hashMapOf("provider" to ProviderType.GOOGLE,"userType" to UserType.DEMANDANTE))
+                                                            hashMapOf("correo" to email,
+                                                    "provider" to ProviderType.GOOGLE,"userType" to UserType.DEMANDANTE,
+                                                    "baja" to false)
+                                                    )
 
                                                     showHome(email?:"", ProviderType.GOOGLE, UserType.DEMANDANTE)
 

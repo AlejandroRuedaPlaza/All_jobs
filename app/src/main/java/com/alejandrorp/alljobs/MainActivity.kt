@@ -3,6 +3,7 @@ package com.alejandrorp.alljobs
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -43,7 +44,7 @@ class MainActivity : Metodos() {
         authLayout.visibility = View.VISIBLE
     }
 
-
+//DATOS DE SESION
     private fun session() {
 
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
@@ -61,6 +62,9 @@ class MainActivity : Metodos() {
     private fun setup() {
         title="Inicio de sesion"
         bt_LoginEmail.setOnClickListener{
+            bt_LoginEmail.isEnabled=false
+            var handler: Handler = Handler()
+
             if (eT_Email_Log.text.isNotEmpty() && eT_Password_Log.text.isNotEmpty()){
                 FirebaseAuth.getInstance()
                     .signInWithEmailAndPassword(eT_Email_Log.text.toString(),
@@ -78,10 +82,21 @@ class MainActivity : Metodos() {
                                 }
                         }else{
                             showAlert("Email o contraseña incorrectos")
+                            handler.postDelayed( Runnable{
+                                bt_LoginEmail.isEnabled=true
+                            }, 500)
                         }
                     }
+            }else{
+                showAlert("Rellene los campos")
+                handler.postDelayed( Runnable{
+                    bt_LoginEmail.isEnabled=true
+                }, 500)
+
             }
-        }
+
+
+        }//fin on click
 
         //BOTON DE CUENTA GOOGLE
         bt_LoginGoogle.setOnClickListener{

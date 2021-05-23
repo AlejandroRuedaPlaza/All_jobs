@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/Logout"
-        android:title="@string/LogOut" />
+        android:id="@+id/menu2"
+        android:icon="@mipmap/options_icon"
+        android:title=""
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/home"
+                android:icon="@mipmap/home_icon"
+                android:title="@string/home"
+                app:showAsAction="ifRoom"/>
+            <item
+                android:id="@+id/perfil"
+                android:icon="@mipmap/user_icon"
+                android:title="@string/myAccount"
+                app:showAsAction="ifRoom"/>
+            <!-- 128px img size-->
+            <item
+                android:id="@+id/Logout"
+                android:icon="@mipmap/logout_icon"
+                android:title="@string/LogOut"
+                app:showAsAction="ifRoom"/>
+
+        </menu>
+    </item>
 </menu>
