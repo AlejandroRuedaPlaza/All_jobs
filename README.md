@@ -18,7 +18,7 @@ Mediante la apk se puede ejecutar la aplicacion
 
 * [Android Studio](https://developer.android.com/studio) - IDE para la cracion del proyecto
 * [Visual Studio Code](https://code.visualstudio.com/) - Usado para generar README.md
-* 
+
 ## Versionado
 El proyecto se ha construdio con Android Studio 4.1.1 y con Kotlin 1.4.20
 
