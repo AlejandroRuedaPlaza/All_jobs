@@ -1,6 +1,7 @@
 package com.alejandrorp.alljobs
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -33,10 +34,37 @@ class ActivityFormularioOferta : Metodos() {
             }
 
         }
+
+        borrarPrefs()
         setup()
     }
 
+    override fun onResume() {
+        super.onResume()
+        setup()
+    }
+
+    fun borrarPrefs() {
+
+        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        prefs.putString("nameLoc", null)
+        prefs.putString("latitud", null)
+        prefs.putString("longitud", null)
+        prefs.apply()
+    }
+
     private fun setup() {
+        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val nameLoc = prefs.getString("nameLoc", null)
+        val latitud = prefs.getString("latitud", null)
+        val longitud = prefs.getString("longitud", null)
+
+        if(nameLoc!=null && latitud != null && longitud != null){
+            tv_Ubicacion.setText(nameLoc.toString())
+//            showAlert(nameLoc+" "+latitud+" "+longitud,this)
+
+
+        }
 
         //==================================================================================
         //EDITAR EMPRESA
@@ -50,6 +78,16 @@ class ActivityFormularioOferta : Metodos() {
             eT_Descripcion_Form.setText(empresa.descripcion)
             val array: Array<String> = resources.getStringArray(R.array.sectorTrabajo)
             sp_FormuEMP.setSelection(getIndex(array,empresa.categoria))
+
+            if (empresa.nameLoc.isNotEmpty()){
+//                tv_Ubicacion.setText(empresa.nameLoc)
+
+                val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+                prefs.putString("nameLoc", empresa.nameLoc)
+                prefs.putString("latitud", empresa.latitud)
+                prefs.putString("longitud", empresa.longitud)
+                prefs.apply()
+            }
             bt_CrearEMP.setText(R.string.editar)
 
 
@@ -58,20 +96,43 @@ class ActivityFormularioOferta : Metodos() {
         //==================================================================================
 
         bt_VolverEMP.setOnClickListener {
+            borrarPrefs()
             onBackPressed()
         }
 
+        bt_SelecUbi.setOnClickListener {
+            val intent: Intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
+
+        }
+
         bt_CrearEMP.setOnClickListener {
+//            showAlert(nameLoc+"")
+//            Thread.sleep(4000)
             //PARTE DE EDICION
             if (empresa != null) {
-
 //                db.collection("users").document(email).update("baja", true)
-                db.collection("empresas").document(empresa.name).update(
-                        mapOf("telefono" to eT_TelefCont_Form.text.toString()
-                                ,"descripcion" to eT_Descripcion_Form.text.toString()
-                                ,"categoria" to sp_FormuEMP.selectedItem.toString()
-                                ,"correo" to eT_Correo_Form.text.toString())
-     )
+                if(nameLoc!=null && latitud != null && longitud != null){
+                    db.collection("empresas").document(empresa.name).update(
+                            mapOf("telefono" to eT_TelefCont_Form.text.toString()
+                                    ,"descripcion" to eT_Descripcion_Form.text.toString()
+                                    ,"categoria" to sp_FormuEMP.selectedItem.toString()
+                                    ,"correo" to eT_Correo_Form.text.toString()
+                                    ,"nameLoc" to nameLoc.toString()
+                                    ,"latitud" to latitud.toString()
+                                    ,"longitud" to longitud.toString())
+                    )
+
+                }else{
+                    db.collection("empresas").document(empresa.name).update(
+                            mapOf("telefono" to eT_TelefCont_Form.text.toString()
+                                    ,"descripcion" to eT_Descripcion_Form.text.toString()
+                                    ,"categoria" to sp_FormuEMP.selectedItem.toString()
+                                    ,"correo" to eT_Correo_Form.text.toString())
+                    )
+                }
+
+
                 finish()
             }
             //PARTE DE CREACION
@@ -96,14 +157,30 @@ class ActivityFormularioOferta : Metodos() {
                                         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
                                         val email = prefs.getString("email", null)
 
+                                        if(nameLoc!=null && latitud != null && longitud != null){
+                                            //añade a la BD de users el provider y el tipo de usuario usando como PK el email
+                                            FirebaseFirestore.getInstance().collection("empresas").document(eT_Name_Form.text.toString()).set(
+                                                    hashMapOf("name" to eT_Name_Form.text.toString()
+                                                            ,"correo" to eT_Correo_Form.text.toString()
+                                                            , "telefono" to eT_TelefCont_Form.text.toString()
+                                                            , "categoria" to sp_FormuEMP.selectedItem
+                                                            , "descripcion" to eT_Descripcion_Form.text.toString()
+                                                            , "creador" to email
+                                                            , "nameLoc" to nameLoc.toString()
+                                                            , "latitud" to latitud.toString()
+                                                            , "longitud" to longitud.toString())
+                                            )
 
-                                        //añade a la BD de users el provider y el tipo de usuario usando como PK el email
-                                        FirebaseFirestore.getInstance().collection("empresas").document(eT_Name_Form.text.toString()).set(
-                                                hashMapOf("name" to eT_Name_Form.text.toString(),
-                                                        "correo" to eT_Correo_Form.text.toString(), "telefono" to eT_TelefCont_Form.text.toString(),
-                                                        "categoria" to sp_FormuEMP.selectedItem, "descripcion" to eT_Descripcion_Form.text.toString(),
-                                                        "creador" to email)
-                                        )
+                                        }else{
+                                            //añade a la BD de users el provider y el tipo de usuario usando como PK el email
+                                            FirebaseFirestore.getInstance().collection("empresas").document(eT_Name_Form.text.toString()).set(
+                                                    hashMapOf("name" to eT_Name_Form.text.toString(),
+                                                            "correo" to eT_Correo_Form.text.toString(), "telefono" to eT_TelefCont_Form.text.toString(),
+                                                            "categoria" to sp_FormuEMP.selectedItem, "descripcion" to eT_Descripcion_Form.text.toString(),
+                                                            "creador" to email)
+                                            )
+                                        }
+
 
 
                                         onBackPressed()

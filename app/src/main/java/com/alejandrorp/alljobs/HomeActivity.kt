@@ -39,6 +39,9 @@ enum class UserType{
 class EmpresaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 open class HomeActivity : Metodos() {
+    override fun onBackPressed() {
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_AllJobs)

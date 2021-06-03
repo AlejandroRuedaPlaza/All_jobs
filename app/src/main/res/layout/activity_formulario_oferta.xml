@@ -7,10 +7,9 @@
     tools:context=".ActivityFormularioOferta">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -18,7 +17,7 @@
 
             <EditText
                 android:id="@+id/eT_Name_Form"
-                android:layout_width="170dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/nameEMP"
@@ -33,12 +32,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="42dp"
                 android:text="@string/correoEMP"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView9"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <EditText
                 android:id="@+id/eT_TelefCont_Form"
-                android:layout_width="170dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:ems="10"
@@ -50,7 +51,7 @@
 
             <EditText
                 android:id="@+id/eT_Correo_Form"
-                android:layout_width="170dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/correoEMP"
@@ -65,6 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="58dp"
                 android:text="@string/telEMP"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView10"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -72,8 +75,10 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="61dp"
+                android:layout_marginTop="32dp"
                 android:text="@string/nameEMP"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView8"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,8 +86,10 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="54dp"
+                android:layout_marginTop="32dp"
                 android:text="@string/descripcionEMP"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/eT_Descripcion_Form"
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -101,33 +108,96 @@
 
             <Spinner
                 android:id="@+id/sp_FormuEMP"
-                android:layout_width="220dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="33dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="32dp"
                 app:layout_constraintStart_toEndOf="@+id/textView10"
                 app:layout_constraintTop_toBottomOf="@+id/eT_TelefCont_Form" />
 
             <TextView
                 android:id="@+id/textView10"
-                android:layout_width="65dp"
+                android:layout_width="95dp"
                 android:layout_height="wrap_content"
                 android:singleLine="false"
                 android:text="@string/categoriaEMP"
                 android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/sp_FormuEMP"
                 app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toTopOf="@+id/sp_FormuEMP" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/linearLayout7"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/eT_Descripcion_Form">
+
+                <LinearLayout
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/selectUbi"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_Ubicacion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/textUbi"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/bt_SelecUbi"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/light_blue"
+                        app:icon="@drawable/world_icon"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:iconSize="@android:dimen/app_icon_size" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
                 <Button
                     android:id="@+id/bt_CrearEMP"

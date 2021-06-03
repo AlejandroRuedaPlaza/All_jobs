@@ -9,7 +9,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.iid.FirebaseInstanceId
 
 open class Metodos: AppCompatActivity()  {
     val db = FirebaseFirestore.getInstance()
@@ -32,7 +31,23 @@ open class Metodos: AppCompatActivity()  {
         dialog.show()
     }
 
+    fun showAlert(texto: String, context: Context){
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Error")
+        builder.setMessage(texto)
+        builder.setPositiveButton("Aceptar",null)
+        val dialog: AlertDialog =builder.create()
+        dialog.show()
+    }
 
+    fun showAlert(titulo:String, texto: String,context: Context){
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(titulo)
+        builder.setMessage(texto)
+        builder.setPositiveButton("Aceptar",null)
+        val dialog: AlertDialog =builder.create()
+        dialog.show()
+    }
     fun showHome(email:String, provider: ProviderType, userType: UserType){
 
         val homeIntent= Intent(this,HomeActivity::class.java).apply {
@@ -148,15 +163,6 @@ open class Metodos: AppCompatActivity()  {
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    public fun notification(){
-        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener {
-            it.token.let {
-                showAlert("token ${it}")
-            }
-
-        }
     }
 
 }

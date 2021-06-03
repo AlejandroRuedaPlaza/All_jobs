@@ -24,6 +24,11 @@
     <string name="buscar">Buscar</string>
     <string name="darBaja">Eliminar cuenta</string>
     <string name="userType">Tipo de cuenta:</string>
+    <string name="select">Seleccionar</string>
+    <string name="buscarDire">Buscar dirección</string>
+    <string name="selectUbi">Ubicación seleccionada(Opcional)</string>
+    <string name="textUbi">Seleccione una ubicación</string>
+    <string name="ubiName">Ubicada en %1$s</string>
 
     <string name="nameEMP">Nombre de la empresa</string>
     <string name="descripcionEMP">Descripcion del puesto</string>
@@ -55,5 +60,6 @@
         <item>Servicios Turisticos y Hosteleros</item>
         <item>Textil</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

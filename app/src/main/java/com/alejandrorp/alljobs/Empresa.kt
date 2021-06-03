@@ -4,13 +4,18 @@ import java.io.Serializable
 
 class Empresa: Serializable {
 
-    constructor(categoria: String, correo: String, creador: String, descripcion: String, name: String, telefono: String) {
+    constructor(categoria: String, correo: String, creador: String, descripcion: String
+                , name: String, telefono: String
+                , nameLoc: String, latitud: String, longitud: String) {
         this.categoria = categoria
         this.correo = correo
         this.creador = creador
         this.descripcion = descripcion
         this.name = name
         this.telefono = telefono
+        this.nameLoc = nameLoc
+        this.latitud = latitud
+        this.longitud = longitud
     }
     constructor(name: String){
     this.name = name
@@ -48,9 +53,26 @@ class Empresa: Serializable {
         set(value) {
             field = value
         }
+    var nameLoc:String = ""
+        get() = field
+        set(value) {
+            field = value
+        }
+    var latitud:String = ""
+        get() = field
+        set(value) {
+            field = value
+        }
+    var longitud:String = ""
+        get() = field
+        set(value) {
+            field = value
+        }
 
     override fun toString(): String {
-        return "Empresa(categoria='$categoria', correo='$correo', creador='$creador', descripcion='$descripcion', name='$name', telefono='$telefono')"
+        return "Empresa(categoria='$categoria', correo='$correo', creador='$creador'" +
+                ", descripcion='$descripcion', name='$name', telefono='$telefono'" +
+                ", nameLoc='$nameLoc', latitud='$latitud', longitud='$longitud')"
     }
 
 

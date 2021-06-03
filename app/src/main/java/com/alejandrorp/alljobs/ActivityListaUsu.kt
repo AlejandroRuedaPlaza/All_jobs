@@ -37,6 +37,10 @@ open class ActivityListaUsu : Metodos() {
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
         val userType = prefs.getString("userType", null)
 
+        bt_Volver_LUsu.setOnClickListener {
+            onBackPressed()
+        }
+
         bt_Buscar_LUsu.setOnClickListener {
             if (et_Buscar_LUsu!=null&&et_Buscar_LUsu.text.isNotEmpty()){
                 busqueda(et_Buscar_LUsu)

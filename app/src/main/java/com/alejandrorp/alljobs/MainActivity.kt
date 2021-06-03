@@ -22,7 +22,7 @@ class MainActivity : Metodos() {
 
 //        Thread.sleep(2000)
         //aplica el theme
-    setTheme(R.style.Theme_AllJobs)
+//    setTheme(R.style.Theme_AllJobs)
 
         super.onCreate(savedInstanceState)
 
