@@ -4,7 +4,7 @@
 En este repositorio se encuentra una aplicacion de busqueda de oferta de empleo que usa firebase y programada en Kotlin
 
 ## Contenido de la publicacion
-El proyecto se ubica en la carpeta app, un ejecutable para probarlo en la carpeta ejecutable y la documentacion en la carpeta documentacion la cual tiene un documento explicativo y el manual de uso con el metodo de instalacion.
+El proyecto se ubica en la carpeta app/src/main, un ejecutable para probarlo en la carpeta ejecutable y la documentacion en la carpeta documentación la cual tiene un documento explicativo y el manual de uso con el metodo de instalacion.
 
 ## Desarrollo del proyecto
 El proyecto a sido desarrollado de forma individual.
