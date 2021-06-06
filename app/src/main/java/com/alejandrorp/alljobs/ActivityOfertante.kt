@@ -8,7 +8,6 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_demandante.*
 import kotlinx.android.synthetic.main.activity_ofertante.*
 
 class ActivityOfertante : Metodos() {
@@ -50,7 +49,7 @@ class ActivityOfertante : Metodos() {
 
                                     //añade a la BD de users el provider y el tipo de usuario usando como PK el email
                                     FirebaseFirestore.getInstance().collection("users").document(eT_Email_Reg_Ofert.text.toString()).set(
-                                            hashMapOf("correo" to eT_Email_Reg_Demand.text.toString(),
+                                            hashMapOf("correo" to eT_Email_Reg_Ofert.text.toString(),
                                                 "provider" to ProviderType.BASIC,"userType" to UserType.OFERTANTE,
                                                 "baja" to false)
                                     )
