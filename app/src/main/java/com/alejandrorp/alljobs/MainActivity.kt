@@ -21,8 +21,8 @@ class MainActivity : Metodos() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
 //        Thread.sleep(2000)
-        //aplica el theme
-//    setTheme(R.style.Theme_AllJobs)
+        //aplica el theme de la app para que no salga el de carga
+    setTheme(R.style.Theme_AllJobs)
 
         super.onCreate(savedInstanceState)
 
