@@ -191,7 +191,7 @@ class ActivityFormularioOferta : Metodos() {
                             }
 
                 }else{
-                    showAlert("Atencion","Rellene todos loas campos")
+                    showAlert("Atencion","Rellene todos los campos")
                 }
 
 
