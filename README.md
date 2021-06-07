@@ -5,6 +5,7 @@ En este repositorio se encuentra una aplicacion de busqueda de oferta de empleo 
 
 ## Contenido de la publicacion
 El proyecto se ubica en la carpeta app/src/main, un ejecutable para probarlo en la carpeta ejecutable y la documentacion en la carpeta documentación la cual tiene un documento explicativo y el manual de uso con el metodo de instalacion.
+Por motivos de espacio el video demostrativo de la aplicacion supera los 25 MB permitidos en github, asi que se puede descargar desde este enlace (https://drive.google.com/file/d/18jkeXhP_q9ofnaASFVkEMAK214FdsMTr/view?usp=sharing)
 
 ## Desarrollo del proyecto
 El proyecto a sido desarrollado de forma individual.
